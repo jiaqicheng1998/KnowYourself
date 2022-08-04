@@ -29,6 +29,14 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         len: [60, 60]
       }
+    },
+    bio: {
+      type: DataTypes.TEXT,
+      allowNull: true
+    },
+    profile_pic: {
+      type: DataTypes.TEXT,
+      allowNull: true
     }
   },
   {
