@@ -34,7 +34,7 @@ router.post(
             content,
             user_id: req.user.id
         });
-        return res.json(newArticle)
+        return res.json(newArticle);
     })
 );
 
@@ -50,7 +50,7 @@ router.put(
         article.title = title;
         article.content = content;
 
-        await article.save()
+        await article.save();
         return res.json(article);
     })
 );
@@ -64,7 +64,7 @@ router.delete(
 
         if (article) {
             await article.destroy();
-            res.send({ message: "deleted!" })
+            res.send({ message: "deleted!" });
         }
     })
 );
