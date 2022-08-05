@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addArticleThunk } from '../../store/article';
+import { putArticleThunk } from '../../store/article';
 import { useParams, useHistory } from 'react-router-dom';
 import WrongPlace from '../WrongPlace';
-import './AddArticle.css';
 
-const AddArticle = ({ isLoaded }) => {
-    const sessionUser = useSelector(state => state.session.user);
-    const [title, setTitle] = useState('');
-    const [content, setContent] = useState('');
-    const [errors, setErrors] = useState([]);
+const EditArticle = ({ isLoaded, articles }) => {
     const history = useHistory();
     const dispatch = useDispatch();
+    const articleId = useParams().id;
+    const sessionUser = useSelector(state => state.session.user);
+    const currentArticle = articles[articleId];
+    const [title, setTitle] = useState(currentArticle?.title || '');
+    const [content, setContent] = useState(currentArticle?.content || '');
+    const [errors, setErrors] = useState([]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -21,11 +22,8 @@ const AddArticle = ({ isLoaded }) => {
             content
         }
 
-        setTitle('');
-        setContent('');
-
-        const toAddArticle = async () => {
-            let res = await dispatch(addArticleThunk(newArticle)).catch(
+        const toUpdateArticle = async () => {
+            let res = await dispatch(putArticleThunk(newArticle, articleId)).catch(
                 async (res) => {
                     const data = await res.json();
                     if (data && data.errors) {
@@ -33,14 +31,16 @@ const AddArticle = ({ isLoaded }) => {
                     }
                 }
             )
+            console.log(res)
 
             if (res) {
-                history.push('/')
+                history.push(`/articles/${articleId}`);
             }
         }
 
-        await toAddArticle();
+        await toUpdateArticle();
     }
+
 
     return (
         isLoaded && sessionUser ? (
@@ -77,4 +77,4 @@ const AddArticle = ({ isLoaded }) => {
     )
 }
 
-export default AddArticle;
+export default EditArticle;

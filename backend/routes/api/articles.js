@@ -11,7 +11,7 @@ const router = express.Router();
 const validateArticle = [
     check('title')
         .exists({ checkFalsy: true })
-        .withMessage('Please provide a valid email.'),
+        .withMessage('Please provide a valid title.'),
     check('content')
         .exists({ checkFalsy: true })
         .withMessage('Please provide the content of your article'),
