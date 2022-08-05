@@ -14,8 +14,10 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     }
   }, {});
-  Article.associate = function(models) {
-    // associations can be defined here
+  Article.associate = function (models) {
+    Article.belongsTo(models.User, { foreignKey: "user_id" })
+    Article.hasMany(models.Image, { foreignKey: 'article_id', onDelete: 'CASCADE', hooks: true })
+    Article.hasMany(models.Comment, { foreignKey: 'article_id', onDelete: 'CASCADE', hooks: true })
   };
   return Article;
 };
