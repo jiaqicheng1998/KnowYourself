@@ -25,17 +25,18 @@ const AddArticle = ({ isLoaded }) => {
         setContent('');
 
         const toAddArticle = async () => {
-            let res = await dispatch(addArticleThunk(newArticle)).catch(
-                async (res) => {
-                    const data = await res.json();
+            let {returnArticle, response} = await dispatch(addArticleThunk(newArticle)).catch(
+                async (response) => {
+                    const data = await response.json();
                     if (data && data.errors) {
                         setErrors(data.errors)
                     }
                 }
             )
 
-            if (res) {
-                history.push('/')
+            if (response) {
+                console.log(returnArticle)
+                history.push(`/articles/${returnArticle.id}`)
             }
         }
 

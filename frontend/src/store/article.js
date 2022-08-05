@@ -46,9 +46,9 @@ export const addArticleThunk = (payload) => async (dispatch) => {
         body: JSON.stringify(payload)
     });
 
-    const data = await response.json();
-    dispatch(addArticle(data))
-    return response;
+    const returnArticle = await response.json();
+    dispatch(addArticle(returnArticle))
+    return {returnArticle, response};
 }
 
 export const putArticleThunk = (payload, id) => async (dispatch) => {
