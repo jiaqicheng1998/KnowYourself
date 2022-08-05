@@ -4,6 +4,8 @@ import { Route, Switch } from 'react-router-dom';
 import SignupFormPage from "./components/SignupFormPage";
 import Navigation from "./components/Navigation";
 import SingleArticle from "./components/SingleArticle";
+import AddArticle from './components/AddArticle';
+import WrongPlace from "./components/WrongPlace";
 import * as sessionActions from './store/session'
 
 
@@ -22,9 +24,13 @@ function App() {
           <Route path='/signup'>
             <SignupFormPage />
           </Route>
+          <Route path='/articles/new'>
+            <AddArticle isLoaded={isLoaded}/>
+          </Route>
           <Route path='/articles/:id'>
             <SingleArticle />
           </Route>
+          <WrongPlace />
         </Switch>
       )}
     </>
