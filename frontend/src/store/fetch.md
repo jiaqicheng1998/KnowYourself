@@ -1,5 +1,5 @@
 article reducers: 
-//loadArticleThunk
+//loadArticlesThunk
 store.dispatch(articleActions.loadArticlesThunk())
 
 //addArticleThunk
@@ -12,3 +12,18 @@ store.dispatch(articleActions.putArticleThunk(article,5))
 
 //deleteArticleThunk 
 store.dispatch(articleActions.deleteArticleThunk(5))
+
+comment reducers:
+//loadCommentsThunk
+store.dispatch(commentActions.loadCommentsThunk())
+
+//addCommentThunk
+let comment = {article_id: 1, content: 'sunset'} 
+store.dispatch(commentActions.addCommentThunk(comment))
+
+//putCommentThunk
+let comment = {article_id: '1', content: 'sunset edited'}
+store.dispatch(commentActions.putCommentThunk(comment,37)) 
+
+//deleteCommentThunk 
+store.dispatch(commentActions.deleteCommentThunk(37))

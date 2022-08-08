@@ -28,12 +28,16 @@ const SingleArticle = () => {
         <div>
             <h1>{article?.title}</h1>
             <p>{article?.content}</p>
-            <NavLink to={`/articles/${articleId}/edit`}>
-                <i className="fa-solid fa-pen-to-square" />
-            </NavLink>
-            <span onClick={handleClick}>
-                <i className="fa-solid fa-trash-can" />
-            </span>
+            {user?.id === article?.user_id && (
+                <div>
+                    <NavLink to={`/articles/${articleId}/edit`}>
+                        <i className="fa-solid fa-pen-to-square" />
+                    </NavLink>
+                    <span onClick={handleClick}>
+                        <i className="fa-solid fa-trash-can" />
+                    </span>
+                </div>
+            )}
         </div>
     )
 }
