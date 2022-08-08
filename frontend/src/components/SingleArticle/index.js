@@ -54,9 +54,9 @@ const SingleArticle = () => {
                         <p>{comment?.content}</p>
                         {user?.id === comment?.user_id && (
                             <div>
-                                <span>
+                                <NavLink to={`/articles/${articleId}/comments/${comment.id}/edit`}>
                                     <i className="fa-solid fa-pen-to-square" />
-                                </span>
+                                </NavLink>
                                 <span>
                                     <i className="fa-solid fa-trash-can" />
                                 </span>
