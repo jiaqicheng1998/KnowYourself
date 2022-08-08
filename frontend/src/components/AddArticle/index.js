@@ -35,7 +35,6 @@ const AddArticle = ({ isLoaded }) => {
             )
 
             if (response) {
-                console.log(returnArticle)
                 history.push(`/articles/${returnArticle.id}`)
             }
         }
@@ -67,7 +66,7 @@ const AddArticle = ({ isLoaded }) => {
                         value={content}
                         onChange={(e) => setContent(e.target.value)}
                         name='content'
-                        placeholder='your thoughts are valuable to us?'
+                        placeholder='your thoughts are valuable to us1'
                     ></textarea>
                     <button type='submit'>Submit</button>
                 </form>
