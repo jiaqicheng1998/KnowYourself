@@ -15,7 +15,9 @@ const validateComment = [
 ]
 
 router.get('/', asyncHandler(async(req, res) => {
-    const comments = await Comment.findAll();
+    const comments = await Comment.findAll({
+        include: 'User'
+    });
     return res.json(comments);
 }));
 
