@@ -1,0 +1,80 @@
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { putArticleThunk } from '../../store/article';
+import { useParams, useHistory } from 'react-router-dom';
+import WrongPlace from '../WrongPlace';
+
+const EditArticle = ({ isLoaded, articles }) => {
+    const history = useHistory();
+    const dispatch = useDispatch();
+    const articleId = useParams().id;
+    const sessionUser = useSelector(state => state.session.user);
+    const currentArticle = articles[articleId];
+    const [title, setTitle] = useState(currentArticle?.title || '');
+    const [content, setContent] = useState(currentArticle?.content || '');
+    const [errors, setErrors] = useState([]);
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setErrors([]);
+        const newArticle = {
+            title,
+            content
+        }
+
+        const toUpdateArticle = async () => {
+            let res = await dispatch(putArticleThunk(newArticle, articleId)).catch(
+                async (res) => {
+                    const data = await res.json();
+                    if (data && data.errors) {
+                        setErrors(data.errors)
+                    }
+                }
+            )
+            console.log(res)
+
+            if (res) {
+                history.push(`/articles/${articleId}`);
+            }
+        }
+
+        await toUpdateArticle();
+    }
+
+
+    return (
+        isLoaded && sessionUser ? (
+            <div>
+                <ul>
+                    {errors.map((error, idx) => (
+                        <li key={idx}>{error}</li>
+                    ))}
+                </ul>
+                <form onSubmit={handleSubmit}>
+                    <label>Title:</label>
+                    <input
+                        type='text'
+                        onChange={(e) => setTitle(e.target.value)}
+                        value={title}
+                        name='title'
+                        placeholder='Be clear and descriptive.'
+                    />
+                    <label>
+                        Content:
+                    </label>
+                    <textarea
+                        value={content}
+                        onChange={(e) => setContent(e.target.value)}
+                        name='content'
+                        placeholder='your thoughts are valuable to us?'
+                    ></textarea>
+                    <button type='submit'>Submit</button>
+                </form>
+            </div>
+        )
+            :
+            (<WrongPlace />)
+    )
+}
+
+export default EditArticle;

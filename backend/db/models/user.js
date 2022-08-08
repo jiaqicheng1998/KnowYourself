@@ -29,6 +29,14 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         len: [60, 60]
       }
+    },
+    bio: {
+      type: DataTypes.TEXT,
+      allowNull: true
+    },
+    profile_pic: {
+      type: DataTypes.TEXT,
+      allowNull: true
     }
   },
   {
@@ -49,6 +57,8 @@ module.exports = (sequelize, DataTypes) => {
 
   User.associate = function(models) {
     // associations can be defined here
+    User.hasMany(models.Article, { foreignKey: 'user_id' });
+    User.hasMany(models.Comment, { foreignKey: 'user_id' });
   };
 
   User.prototype.toSafeObject = function() {
