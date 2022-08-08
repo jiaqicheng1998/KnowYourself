@@ -7,6 +7,7 @@ import SingleArticle from "./components/SingleArticle";
 import AddArticle from './components/AddArticle';
 import WrongPlace from "./components/WrongPlace";
 import EditArticle from './components/EditArticle'
+import AddComment from "./components/AddComment";
 import * as sessionActions from './store/session'
 import { loadArticlesThunk } from "./store/article";
 
@@ -32,6 +33,9 @@ function App() {
           </Route>
           <Route path='/articles/new' exact={true}>
             <AddArticle isLoaded={isLoaded}/>
+          </Route>
+          <Route path='/articles/:articleId/comments/new' exact={true}>
+            <AddComment isLoaded={isLoaded}/>
           </Route>
           <Route path='/articles/:id/edit' exact={true}>
             <EditArticle isLoaded={isLoaded} articles={articles}/>

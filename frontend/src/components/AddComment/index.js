@@ -1,31 +1,29 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { addArticleThunk } from '../../store/article';
-import { useParams, useHistory } from 'react-router-dom';
+import React, { useState } from 'react'
+import { useParams, useHistory } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { addCommentThunk } from '../../store/comment'
 import WrongPlace from '../WrongPlace';
-import './AddArticle.css';
 
-const AddArticle = ({ isLoaded }) => {
+const AddComment = ({ isLoaded }) => {
     const sessionUser = useSelector(state => state.session.user);
-    const [title, setTitle] = useState('');
-    const [content, setContent] = useState('');
-    const [errors, setErrors] = useState([]);
-    const history = useHistory();
-    const dispatch = useDispatch();
+    const dispatch = useDispatch()
+    const history = useHistory()
+    const articleId = useParams().articleId
+    const [errors, setErrors] = useState([])
+    const [content, setContent] = useState('')
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setErrors([]);
-        const newArticle = {
-            title,
-            content
+        const newComment = {
+            article_id: articleId,
+            content: content
         }
 
-        setTitle('');
-        setContent('');
+        setContent('')
 
-        const toAddArticle = async () => {
-            let {returnArticle, response} = await dispatch(addArticleThunk(newArticle)).catch(
+        const toAddComment = async () => {
+            let { returnComment, response } = await dispatch(addCommentThunk(newComment)).catch(
                 async (response) => {
                     const data = await response.json();
                     if (data && data.errors) {
@@ -35,13 +33,11 @@ const AddArticle = ({ isLoaded }) => {
             )
 
             if (response) {
-                history.push(`/articles/${returnArticle.id}`)
+                history.push(`/articles/${articleId}`)
             }
         }
-
-        await toAddArticle();
+        await toAddComment();
     }
-
     return (
         isLoaded && sessionUser ? (
             <div>
@@ -51,14 +47,6 @@ const AddArticle = ({ isLoaded }) => {
                     ))}
                 </ul>
                 <form onSubmit={handleSubmit}>
-                    <label>Title:</label>
-                    <input
-                        type='text'
-                        onChange={(e) => setTitle(e.target.value)}
-                        value={title}
-                        name='title'
-                        placeholder='Be clear and descriptive.'
-                    />
                     <label>
                         Content:
                     </label>
@@ -77,4 +65,4 @@ const AddArticle = ({ isLoaded }) => {
     )
 }
 
-export default AddArticle;
+export default AddComment;
