@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadArticlesThunk, deleteArticleThunk } from '../../store/article';
-import { loadCommentsThunk, deleteCommentsThunk } from '../../store/comment'
+import { loadCommentsThunk, deleteCommentThunk } from '../../store/comment'
 import './SingleArticle.css';
 import { NavLink, useHistory } from 'react-router-dom';
 
@@ -57,7 +57,15 @@ const SingleArticle = () => {
                                 <NavLink to={`/articles/${articleId}/comments/${comment.id}/edit`}>
                                     <i className="fa-solid fa-pen-to-square" />
                                 </NavLink>
-                                <span>
+                                <span
+                                    onClick={
+                                        async (e) => {
+                                            e.preventDefault();
+                                            await dispatch(deleteCommentThunk(comment.id))
+                                                .then(() => dispatch(loadCommentsThunk()))
+                                        }
+                                    }
+                                >
                                     <i className="fa-solid fa-trash-can" />
                                 </span>
                             </div>
