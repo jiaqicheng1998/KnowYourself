@@ -10,6 +10,7 @@ import EditArticle from './components/EditArticle'
 import HomePage from "./components/HomePage";
 import AddComment from "./components/AddComment";
 import EditComment from "./components/EditComment";
+import Footer from "./components/Footer";
 import * as sessionActions from './store/session'
 import { loadArticlesThunk } from "./store/article";
 
@@ -54,6 +55,7 @@ function App() {
           <WrongPlace />
         </Switch>
       )}
+      <Footer />
     </>
   )
 }
