@@ -48,7 +48,7 @@ const SingleArticle = () => {
                 </NavLink>
             </div>
             <div>
-                {Object.values(comments).map((comment) => (
+                {Object.values(selectedComments).map((comment) => (
                     <div className='ind-comment' key={comment?.id}>
                         <p>{comment.User?.username || user.username}</p>
                         <p>{comment?.content}</p>
