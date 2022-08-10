@@ -19,7 +19,9 @@ const validateArticle = [
 ]
 
 router.get('/', asyncHandler(async (req, res) => {
-    const articles = await Article.findAll();
+    const articles = await Article.findAll({
+        include: 'User'
+    });
     return res.json(articles);
 }));
 

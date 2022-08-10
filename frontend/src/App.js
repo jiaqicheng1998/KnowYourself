@@ -7,6 +7,7 @@ import SingleArticle from "./components/SingleArticle";
 import AddArticle from './components/AddArticle';
 import WrongPlace from "./components/WrongPlace";
 import EditArticle from './components/EditArticle'
+import HomePage from "./components/HomePage";
 import AddComment from "./components/AddComment";
 import EditComment from "./components/EditComment";
 import * as sessionActions from './store/session'
@@ -46,6 +47,9 @@ function App() {
           </Route>
           <Route path='/articles/:id' exact={true}>
             <SingleArticle />
+          </Route>
+          <Route path='/' exact={true}>
+            <HomePage />
           </Route>
           <WrongPlace />
         </Switch>
