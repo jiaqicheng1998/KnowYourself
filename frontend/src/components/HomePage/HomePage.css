@@ -1,6 +1,65 @@
 .banner {
     width: 100%;
     height: 600px;
-    background-size: 100% auto;
-    background-position: center;
+    background-size: cover;
+    background-position: center center;
+}
+
+.img-left {
+    width: 250px;
+    height: 250px;
+    background-size: cover;
+    background-position: center center;
+}
+
+.user-icon {
+    width: 40px;
+    height: 40px;
+    background-size: cover;
+    background-position: center center;
+    border-radius: 50px;
+}
+
+.articles-container {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.ind-article-card {
+    border: 1px solid #e5e5e5;
+    padding: 30px;
+    margin: 50px 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.ind-article-card p {
+    font-family: 'Open Sans', sans-serif;
+    color: #404040;
+    font-size: 1.2rem;
+}
+
+.ind-article-card .title {
+    font-family: 'Oleo Script Swash Caps', cursive;
+    font-size: 1.9rem;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    color: #27272a;
+}
+
+.ind-article-card-left {
+    max-width: 800px;
+}
+
+.name-and-profile {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.name-and-profile p {
+    margin-left: 20px;
+    font-size: 1rem;
 }
