@@ -12,6 +12,11 @@ const HomePage = () => {
     }, [dispatch])
     const articles = useSelector(state => state.article.entries);
 
+    const getContent = (str) => {
+        let arr = str.split(' &nbsp;')
+        return arr.filter(a => a.length > 300)[0]
+    }
+
     return (
         <div className="homepage">
             <div className="banner" style={{ backgroundImage: `url(${banner})` }}></div>
@@ -25,7 +30,7 @@ const HomePage = () => {
                                     <div className="user-icon" style={{ backgroundImage: `url(${article?.User.profile_pic})` }}></div>
                                     <p>{article?.User.username}</p>
                                 </div>
-                                <p>{article?.content.slice(0, 300)}...</p>
+                                <p>{getContent(article?.content)?.slice(0, 260)}...</p>
                             </div>
                             <div className="img-left" style={{ backgroundImage: `url(${article.img_url})` }}></div>
                         </div>
