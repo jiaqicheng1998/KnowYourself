@@ -75,7 +75,7 @@ const AddArticle = ({ isLoaded }) => {
                             placeholder='Image URL'
                         />
                     </div>
-                    <button className="new-article-submit" type='submit'><i class="fa-solid fa-paper-plane fa-lg"></i></button>
+                    <button className="new-article-submit" type='submit'><i className="fa-solid fa-paper-plane fa-lg"></i></button>
                 </form>
 
                 <div className='editor'>
