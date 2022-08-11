@@ -5,6 +5,7 @@ import { loadArticlesThunk, deleteArticleThunk } from '../../store/article';
 import { loadCommentsThunk, deleteCommentThunk } from '../../store/comment'
 import './SingleArticle.css';
 import { NavLink, useHistory } from 'react-router-dom';
+import parse from 'html-react-parser'
 
 const SingleArticle = () => {
     const dispatch = useDispatch();
@@ -31,7 +32,7 @@ const SingleArticle = () => {
     return (
         <div>
             <h1>{article?.title}</h1>
-            <p>{article?.content}</p>
+            <p>{parse(article?.content)}</p>
             {user?.id === article?.user_id && (
                 <div>
                     <NavLink to={`/articles/${articleId}/edit`}>

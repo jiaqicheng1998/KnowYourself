@@ -5,7 +5,6 @@ import { useParams, useHistory } from 'react-router-dom';
 import WrongPlace from '../WrongPlace';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import parse from 'html-react-parser'
 import './AddArticle.css';
 
 const AddArticle = ({ isLoaded }) => {
@@ -64,7 +63,7 @@ const AddArticle = ({ isLoaded }) => {
                         name='title'
                         placeholder='Title'
                     />
-                    <button id="new-article-submit" type='submit'><i class="fa-solid fa-paper-plane fa-lg"></i></button>
+                    <button className="new-article-submit" type='submit'><i class="fa-solid fa-paper-plane fa-lg"></i></button>
                 </form>
                 <div className='editor'>
                     <CKEditor

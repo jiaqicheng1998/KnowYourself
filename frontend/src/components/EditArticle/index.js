@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { putArticleThunk } from '../../store/article';
 import { useParams, useHistory } from 'react-router-dom';
 import WrongPlace from '../WrongPlace';
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 const EditArticle = ({ isLoaded, articles }) => {
     const history = useHistory();
@@ -44,32 +46,33 @@ const EditArticle = ({ isLoaded, articles }) => {
 
     return (
         isLoaded && sessionUser ? (
-            <div>
+            <div className='add-article-page'>
                 <ul>
                     {errors.map((error, idx) => (
                         <li key={idx}>{error}</li>
                     ))}
                 </ul>
-                <form onSubmit={handleSubmit}>
-                    <label>Title:</label>
+                <form className="add-article-form" onSubmit={handleSubmit}>
                     <input
                         type='text'
                         onChange={(e) => setTitle(e.target.value)}
+                        id="article-title-input"
                         value={title}
                         name='title'
-                        placeholder='Be clear and descriptive.'
+                        placeholder='Title'
                     />
-                    <label>
-                        Content:
-                    </label>
-                    <textarea
-                        value={content}
-                        onChange={(e) => setContent(e.target.value)}
-                        name='content'
-                        placeholder='your thoughts are valuable to us?'
-                    ></textarea>
-                    <button type='submit'>Submit</button>
+                    <button className="new-article-submit" type='submit'><i class="fa-solid fa-paper-plane fa-lg"></i></button>
                 </form>
+                <div className='editor'>
+                    <CKEditor
+                        editor={ClassicEditor}
+                        data={content}
+                        onChange={(event, editor) => {
+                            const data = editor.getData()
+                            setContent(data)
+                        }} 
+                    />
+                </div>
             </div>
         )
             :
