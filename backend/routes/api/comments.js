@@ -11,7 +11,8 @@ const router = express.Router();
 const validateComment = [
     check('content')
         .exists({ checkFalsy: true })
-        .withMessage('Please provide some content.')
+        .withMessage('Please provide some content.'),
+    handleValidationErrors
 ]
 
 router.get('/', asyncHandler(async(req, res) => {

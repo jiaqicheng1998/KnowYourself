@@ -1,0 +1,41 @@
+.add-comment-page {
+    width: 800px;
+    min-height: 520px;
+    margin: 0 auto;
+}
+
+.add-comment-page textarea {
+    width: 800px;
+    margin-top: 20px;
+    height: 400px;
+    border: 1px solid #a1a1aa;
+    border-radius: 5px;
+    padding-left: 15px;
+    padding-top: 15px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.add-comment-page textarea:focus {
+    outline: none;
+}
+
+.add-comment-page textarea::placeholder{
+    font-family: 'Montserrat', sans-serif;
+}
+
+.submit-comment {
+    border: none;
+    background-color: #eef0ec;
+    color: #4e6058;
+    font-family: 'Montserrat', sans-serif;
+    width: 150px;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid #4e6058;
+    margin-top: 30px;
+}
+
+.submit-comment:hover {
+    background-color: #cbd5d0;
+    cursor: pointer;
+}

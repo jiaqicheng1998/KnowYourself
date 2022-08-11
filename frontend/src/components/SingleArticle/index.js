@@ -64,7 +64,7 @@ const SingleArticle = () => {
                             <div className='ind-comment' key={comment?.id}>
                                 <div className='ind-comment-top'>
                                     <div className="name-and-profile">
-                                        <div className="user-icon" style={{ backgroundImage: `url(${comment?.User.profile_pic})` }}></div>
+                                        <div className="user-icon" style={{ backgroundImage: `url(${comment?.User?.profile_pic})` }}></div>
                                         <p>{comment.User?.username || user.username}</p>
                                     </div>
                                     <div>

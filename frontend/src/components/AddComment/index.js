@@ -3,6 +3,7 @@ import { useParams, useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { addCommentThunk } from '../../store/comment'
 import WrongPlace from '../WrongPlace';
+import './AddComment.css'
 
 const AddComment = ({ isLoaded }) => {
     const sessionUser = useSelector(state => state.session.user);
@@ -40,23 +41,22 @@ const AddComment = ({ isLoaded }) => {
     }
     return (
         isLoaded && sessionUser ? (
-            <div>
-                <ul>
-                    {errors.map((error, idx) => (
-                        <li key={idx}>{error}</li>
-                    ))}
-                </ul>
+            <div className='add-comment-page'>
+                <div>
+                    {errors &&
+                        <div className="error-msg">
+                            {errors.map((error, idx) => <div key={idx}> ❌ {error}</div>)}
+                        </div>
+                    }
+                </div>
                 <form onSubmit={handleSubmit}>
-                    <label>
-                        Content:
-                    </label>
                     <textarea
                         value={content}
                         onChange={(e) => setContent(e.target.value)}
                         name='content'
                         placeholder='your thoughts are valuable to us!'
                     ></textarea>
-                    <button type='submit'>Submit</button>
+                    <button className="submit-comment" type='submit'>Submit</button>
                 </form>
             </div>
         )
