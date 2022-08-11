@@ -77,8 +77,13 @@ nav {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
 }
 
+.profile_button {
+    height: 40px;
+    margin-left: 20px;
+}
 .profile_button:hover {
     cursor: pointer;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
@@ -107,5 +112,20 @@ nav {
 
 #logout:hover {
     cursor: pointer;
+}
+
+#create_article {
+    font-size: 16px;
+    font-weight: 500;
+    color: #292524;
+    padding: 0 20px;
+    height: 65px;
+    text-align: center;
+    line-height: 65px;
+    font-family: 'Montserrat';
+}
+
+#create_article:hover {
+    background-color: #f4f4f5;
 }
 

@@ -21,7 +21,8 @@ function Navigation({ isLoaded }) {
     let sessionLinks;
     if (sessionUser) {
         sessionLinks = (
-            <div>
+            <div className='sessionLinks_right'>
+                <NavLink id="create_article" exact to='/articles/new'>Thoughts?</NavLink>
                 <ProfileButton user={sessionUser} />
             </div>
         );
