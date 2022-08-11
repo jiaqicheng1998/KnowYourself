@@ -81,6 +81,9 @@ const AddArticle = ({ isLoaded }) => {
                 <div className='editor'>
                     <CKEditor
                         editor={ClassicEditor}
+                        config={{
+                            removePlugins: ["EasyImage","ImageUpload","MediaEmbed"]
+                        }}
                         data={content}
                         onChange={(event, editor) => {
                             const data = editor.getData()
@@ -88,6 +91,7 @@ const AddArticle = ({ isLoaded }) => {
                         }}
                     />
                 </div>
+                <p>{content}</p>
             </div>
         )
             :
