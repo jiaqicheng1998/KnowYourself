@@ -19,14 +19,12 @@ const HomePage = () => {
         return Object.values(images).filter(image => image.article_id === article_id)[0]
     }
 
-    console.log(getFirstImage(2))
-
     return (
         <div className="homepage">
             <div className="banner" style={{ backgroundImage: `url(${banner})` }}></div>
             <div className="articles-container">
                 {Object.values(articles).map((article) => (
-                    <NavLink to={`/articles/${article.id}`}>
+                    <NavLink to={`/articles/${article.id}`} key={article.id}>
                         <div className="ind-article-card">
                             <div className="ind-article-card-left">
                                 <p className="title">{article?.title}</p>
