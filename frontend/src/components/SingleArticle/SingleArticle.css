@@ -67,3 +67,29 @@
     flex-direction: row;
     cursor: pointer;
 }
+
+#write-comment {
+    position: sticky;
+    bottom: 70px;
+    margin-left: 88%;
+}
+
+#write-comment a {
+    text-decoration: none;
+    color: #4e6058;
+}
+
+.comments-container {
+    margin-top: 50px;
+}
+
+.comments-container h1 {
+    margin-bottom: 20px;
+}
+
+.ind-comment-top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
