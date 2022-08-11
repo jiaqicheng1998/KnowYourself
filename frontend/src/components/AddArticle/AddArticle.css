@@ -42,3 +42,9 @@
     display: flex;
     flex-direction: column;
 }
+
+.error-msg {
+    font-family: 'Montserrat', sans-serif;
+    color: #991b1b;
+    margin-bottom: 10px;
+}

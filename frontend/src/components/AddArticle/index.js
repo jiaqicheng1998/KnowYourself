@@ -11,6 +11,7 @@ const AddArticle = ({ isLoaded }) => {
     const sessionUser = useSelector(state => state.session.user);
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
+    const [image, setImage] = useState('');
     const [errors, setErrors] = useState([]);
     const history = useHistory();
     const dispatch = useDispatch();
@@ -20,7 +21,8 @@ const AddArticle = ({ isLoaded }) => {
         setErrors([]);
         const newArticle = {
             title,
-            content
+            content,
+            img_url: image
         }
 
         setTitle('');
@@ -47,11 +49,13 @@ const AddArticle = ({ isLoaded }) => {
     return (
         isLoaded && sessionUser ? (
             <div className='add-article-page'>
-                <ul>
-                    {errors.map((error, idx) => (
-                        <li key={idx}>{error}</li>
-                    ))}
-                </ul>
+                <div>
+                    {errors &&
+                        <div className="error-msg">
+                            {errors.map((error, idx) => <div key={idx}> ❌ {error}</div>)}
+                        </div>
+                    }
+                </div>
                 <form className="add-article-form" onSubmit={handleSubmit}>
                     <div className='two-input'>
                         <input
@@ -61,6 +65,14 @@ const AddArticle = ({ isLoaded }) => {
                             value={title}
                             name='title'
                             placeholder='Title'
+                        />
+                         <input
+                            type='text'
+                            onChange={(e) => setImage(e.target.value)}
+                            value={image}
+                            className="article-title-input"
+                            name='image'
+                            placeholder='Image URL'
                         />
                     </div>
                     <button className="new-article-submit" type='submit'><i class="fa-solid fa-paper-plane fa-lg"></i></button>
@@ -76,7 +88,6 @@ const AddArticle = ({ isLoaded }) => {
                         }}
                     />
                 </div>
-                <p>{content}</p>
             </div>
         )
             :

@@ -13,7 +13,7 @@ const EditArticle = ({ isLoaded, articles }) => {
     const sessionUser = useSelector(state => state.session.user);
     const currentArticle = articles[articleId];
     const [title, setTitle] = useState(currentArticle?.title || '');
-    const [image, setImage] = useState('');
+    const [image, setImage] = useState(currentArticle?.img_url || '');
     const [content, setContent] = useState(currentArticle?.content || '');
     const [errors, setErrors] = useState([]);
 
@@ -22,7 +22,8 @@ const EditArticle = ({ isLoaded, articles }) => {
         setErrors([]);
         const newArticle = {
             title,
-            content
+            content,
+            img_url: image
         }
 
         const toUpdateArticle = async () => {
@@ -47,11 +48,13 @@ const EditArticle = ({ isLoaded, articles }) => {
     return (
         isLoaded && sessionUser ? (
             <div className='add-article-page'>
-                <ul>
-                    {errors.map((error, idx) => (
-                        <li key={idx}>{error}</li>
-                    ))}
-                </ul>
+                <div>
+                    {errors &&
+                        <div className="error-msg">
+                            {errors.map((error, idx) => <div key={idx}> ❌ {error}</div>)}
+                        </div>
+                    }
+                </div>
                 <form className="add-article-form" onSubmit={handleSubmit}>
                     <div className='two-input'>
                         <input
@@ -83,7 +86,6 @@ const EditArticle = ({ isLoaded, articles }) => {
                         }}
                     />
                 </div>
-                <p>{content}</p>
             </div>
         )
             :
