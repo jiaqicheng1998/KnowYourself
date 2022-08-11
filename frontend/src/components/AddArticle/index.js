@@ -23,8 +23,6 @@ const AddArticle = ({ isLoaded }) => {
             content
         }
 
-        console.log(newArticle)
-
         setTitle('');
         setContent('');
 
@@ -55,16 +53,19 @@ const AddArticle = ({ isLoaded }) => {
                     ))}
                 </ul>
                 <form className="add-article-form" onSubmit={handleSubmit}>
-                    <input
-                        type='text'
-                        onChange={(e) => setTitle(e.target.value)}
-                        id="article-title-input"
-                        value={title}
-                        name='title'
-                        placeholder='Title'
-                    />
+                    <div className='two-input'>
+                        <input
+                            type='text'
+                            onChange={(e) => setTitle(e.target.value)}
+                            className="article-title-input"
+                            value={title}
+                            name='title'
+                            placeholder='Title'
+                        />
+                    </div>
                     <button className="new-article-submit" type='submit'><i class="fa-solid fa-paper-plane fa-lg"></i></button>
                 </form>
+
                 <div className='editor'>
                     <CKEditor
                         editor={ClassicEditor}
@@ -72,13 +73,9 @@ const AddArticle = ({ isLoaded }) => {
                         onChange={(event, editor) => {
                             const data = editor.getData()
                             setContent(data)
-                        }} 
+                        }}
                     />
                 </div>
-                {/* <div>
-                    <h2>Content</h2>
-                    <p>{parse(content)}</p>
-                </div> */}
             </div>
         )
             :

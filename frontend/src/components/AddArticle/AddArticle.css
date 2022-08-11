@@ -5,7 +5,7 @@
     padding-top: 50px;
 }
 
-#article-title-input {
+.article-title-input {
     border: none;
     height: 35px;
     width: 800px;
@@ -15,7 +15,7 @@
     font-size: 1.3rem;
 }
 
-#article-title-input:focus {
+.article-title-input:focus {
     outline: none;
 }
 
@@ -35,5 +35,10 @@
 }
 
 .ck-editor__editable {
-    min-height: 360px;
+    min-height: 320px;
+}
+
+.two-input {
+    display: flex;
+    flex-direction: column;
 }

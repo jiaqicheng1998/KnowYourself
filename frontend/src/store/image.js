@@ -32,7 +32,7 @@ export const addImageThunk = (payload) => async (dispatch) => {
 
     const returnImage = await response.json();
     dispatch(addImage(returnImage))
-    return {returnImage, response};
+    return {returnImage};
 }
 
 //reducer 
