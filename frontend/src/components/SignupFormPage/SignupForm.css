@@ -1,0 +1,32 @@
+.signup-form {
+    padding-top: 100px;
+    width: 500px;
+    min-height: 430px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.signup-form input {
+    margin-top: 30px;
+    height: 30px;
+    border: 1px solid #a1a1aa;
+    border-radius: 5px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#sign-up-button {
+    border: none;
+    background-color: #eef0ec;
+    color: #4e6058;
+    font-family: 'Montserrat', sans-serif;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid #4e6058;
+    margin-top: 30px;
+}
+
+#sign-up-button {
+    background-color: #cbd5d0;
+    cursor: pointer;
+}
