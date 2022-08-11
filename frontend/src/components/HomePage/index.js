@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import banner from './banner.png';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadArticlesThunk } from "../../store/article";
-import { loadImagesThunk } from "../../store/image";
 import { NavLink } from "react-router-dom";
 import './HomePage.css';
 
@@ -10,14 +9,8 @@ const HomePage = () => {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(loadArticlesThunk());
-        dispatch(loadImagesThunk());
     }, [dispatch])
     const articles = useSelector(state => state.article.entries);
-    const images = useSelector(state => state.image.entries);
-
-    const getFirstImage = (article_id) => {
-        return Object.values(images).filter(image => image.article_id === article_id)[0]
-    }
 
     return (
         <div className="homepage">
@@ -34,7 +27,7 @@ const HomePage = () => {
                                 </div>
                                 <p>{article?.content.slice(0, 300)}...</p>
                             </div>
-                            <div className="img-left" style={{ backgroundImage: `url(${getFirstImage(article.id)?.img_url})` }}></div>
+                            <div className="img-left" style={{ backgroundImage: `url(${article.img_url})` }}></div>
                         </div>
                     </NavLink>
                 ))}

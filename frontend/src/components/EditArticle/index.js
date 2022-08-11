@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { putArticleThunk } from '../../store/article';
-import { addImageThunk } from '../../store/image';
 import { useParams, useHistory } from 'react-router-dom';
 import WrongPlace from '../WrongPlace';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
@@ -26,11 +25,6 @@ const EditArticle = ({ isLoaded, articles }) => {
             content
         }
 
-        const newImage = {
-            img_url: image,
-            article_id: articleId
-        }
-
         const toUpdateArticle = async () => {
             let res = await dispatch(putArticleThunk(newArticle, articleId)).catch(
                 async (res) => {
@@ -45,14 +39,6 @@ const EditArticle = ({ isLoaded, articles }) => {
                 history.push(`/articles/${articleId}`);
             }
         }
-
-        const toUploadImage = async () => {
-            await dispatch(addImageThunk(newImage))
-        }
-
-        if (image) {
-            await toUploadImage()
-        };
 
         await toUpdateArticle();
     }
@@ -82,7 +68,7 @@ const EditArticle = ({ isLoaded, articles }) => {
                             value={image}
                             className="article-title-input"
                             name='image'
-                            placeholder='Image URL (Optional)'
+                            placeholder='Image URL'
                         />
                     </div>
                     <button className="new-article-submit" type='submit'><i class="fa-solid fa-paper-plane fa-lg"></i></button>
@@ -97,6 +83,7 @@ const EditArticle = ({ isLoaded, articles }) => {
                         }}
                     />
                 </div>
+                <p>{content}</p>
             </div>
         )
             :

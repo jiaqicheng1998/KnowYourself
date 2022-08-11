@@ -12,11 +12,14 @@ module.exports = (sequelize, DataTypes) => {
     user_id: {
       type: DataTypes.INTEGER,
       allowNull: false
+    },
+    img_url: {
+      type: DataTypes.TEXT,
+      allowNull: false
     }
   }, {});
   Article.associate = function (models) {
     Article.belongsTo(models.User, { foreignKey: "user_id" })
-    Article.hasMany(models.Image, { foreignKey: 'article_id', onDelete: 'CASCADE', hooks: true })
     Article.hasMany(models.Comment, { foreignKey: 'article_id', onDelete: 'CASCADE', hooks: true })
   };
   return Article;
