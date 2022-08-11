@@ -28,7 +28,8 @@ module.exports = {
       },
       profile_pic: {
         type: Sequelize.TEXT,
-        allowNull: true
+        allowNull: true,
+        defaultValue: 'https://i.pinimg.com/originals/9f/aa/a1/9faaa1fedc94c355a4256ba6207c7714.png'
       },
       createdAt: {
         allowNull: false,

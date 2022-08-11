@@ -15,6 +15,9 @@ const validateArticle = [
     check('content')
         .exists({ checkFalsy: true })
         .withMessage('Please provide the content of your article'),
+    check('img_url')
+        .exists({ checkFalsy: true })
+        .withMessage('Please provide a image for your article'),
     handleValidationErrors
 ]
 
@@ -30,11 +33,12 @@ router.post(
     requireAuth,
     validateArticle,
     asyncHandler(async (req, res) => {
-        const { title, content } = req.body;
+        const { title, content, img_url } = req.body;
         const newArticle = await Article.create({
             title,
             content,
-            user_id: req.user.id
+            user_id: req.user.id,
+            img_url
         });
         return res.json(newArticle);
     })
@@ -46,11 +50,12 @@ router.put(
     validateArticle,
     asyncHandler(async (req, res) => {
         const articleId = req.params.id;
-        const { title, content } = req.body;
+        const { title, content, img_url } = req.body;
         const article = await Article.findByPk(articleId);
 
         article.title = title;
         article.content = content;
+        article.img_url = img_url;
 
         await article.save();
         return res.json(article);

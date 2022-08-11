@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { putArticleThunk } from '../../store/article';
 import { useParams, useHistory } from 'react-router-dom';
 import WrongPlace from '../WrongPlace';
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 const EditArticle = ({ isLoaded, articles }) => {
     const history = useHistory();
@@ -11,6 +13,7 @@ const EditArticle = ({ isLoaded, articles }) => {
     const sessionUser = useSelector(state => state.session.user);
     const currentArticle = articles[articleId];
     const [title, setTitle] = useState(currentArticle?.title || '');
+    const [image, setImage] = useState(currentArticle?.img_url || '');
     const [content, setContent] = useState(currentArticle?.content || '');
     const [errors, setErrors] = useState([]);
 
@@ -19,7 +22,8 @@ const EditArticle = ({ isLoaded, articles }) => {
         setErrors([]);
         const newArticle = {
             title,
-            content
+            content,
+            img_url: image
         }
 
         const toUpdateArticle = async () => {
@@ -31,7 +35,6 @@ const EditArticle = ({ isLoaded, articles }) => {
                     }
                 }
             )
-            console.log(res)
 
             if (res) {
                 history.push(`/articles/${articleId}`);
@@ -44,32 +47,48 @@ const EditArticle = ({ isLoaded, articles }) => {
 
     return (
         isLoaded && sessionUser ? (
-            <div>
-                <ul>
-                    {errors.map((error, idx) => (
-                        <li key={idx}>{error}</li>
-                    ))}
-                </ul>
-                <form onSubmit={handleSubmit}>
-                    <label>Title:</label>
-                    <input
-                        type='text'
-                        onChange={(e) => setTitle(e.target.value)}
-                        value={title}
-                        name='title'
-                        placeholder='Be clear and descriptive.'
-                    />
-                    <label>
-                        Content:
-                    </label>
-                    <textarea
-                        value={content}
-                        onChange={(e) => setContent(e.target.value)}
-                        name='content'
-                        placeholder='your thoughts are valuable to us?'
-                    ></textarea>
-                    <button type='submit'>Submit</button>
+            <div className='add-article-page'>
+                <div>
+                    {errors &&
+                        <div className="error-msg">
+                            {errors.map((error, idx) => <div key={idx}> ❌ {error}</div>)}
+                        </div>
+                    }
+                </div>
+                <form className="add-article-form" onSubmit={handleSubmit}>
+                    <div className='two-input'>
+                        <input
+                            type='text'
+                            onChange={(e) => setTitle(e.target.value)}
+                            className="article-title-input"
+                            value={title}
+                            name='title'
+                            placeholder='Title'
+                        />
+                        <input
+                            type='text'
+                            onChange={(e) => setImage(e.target.value)}
+                            value={image}
+                            className="article-title-input"
+                            name='image'
+                            placeholder='Image URL'
+                        />
+                    </div>
+                    <button className="new-article-submit" type='submit'><i className="fa-solid fa-paper-plane fa-lg"></i></button>
                 </form>
+                <div className='editor'>
+                    <CKEditor
+                        editor={ClassicEditor}
+                        config={{
+                            removePlugins: ["EasyImage","ImageUpload","MediaEmbed"]
+                        }}
+                        data={content}
+                        onChange={(event, editor) => {
+                            const data = editor.getData()
+                            setContent(data)
+                        }}
+                    />
+                </div>
             </div>
         )
             :

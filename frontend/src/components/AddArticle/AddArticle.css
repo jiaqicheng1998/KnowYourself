@@ -1,0 +1,58 @@
+.add-article-page {
+    width: 1200px;
+    min-height: 480px;
+    margin: 0 auto;
+    padding-top: 50px;
+}
+
+.article-title-input {
+    border: none;
+    height: 35px;
+    width: 800px;
+    color: #525252;
+    padding-left: 5px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.3rem;
+}
+
+.article-title-input:focus {
+    outline: none;
+}
+
+.add-article-form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.new-article-submit {
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+    color: #244524;
+}
+
+.ck-editor__editable {
+    min-height: 320px;
+}
+
+.two-input {
+    display: flex;
+    flex-direction: column;
+}
+
+.error-msg {
+    font-family: 'Montserrat', sans-serif;
+    color: #991b1b;
+    margin-bottom: 10px;
+}
+
+/* .ck-file-dialog-button {
+    display: none;
+}
+
+button.ck.ck-button.ck-off.ck-dropdown__button {
+    display: none;
+} */
