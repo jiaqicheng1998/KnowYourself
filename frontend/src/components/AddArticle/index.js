@@ -3,6 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addArticleThunk } from '../../store/article';
 import { useParams, useHistory } from 'react-router-dom';
 import WrongPlace from '../WrongPlace';
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import parse from 'html-react-parser'
 import './AddArticle.css';
 
 const AddArticle = ({ isLoaded }) => {
@@ -21,11 +24,13 @@ const AddArticle = ({ isLoaded }) => {
             content
         }
 
+        console.log(newArticle)
+
         setTitle('');
         setContent('');
 
         const toAddArticle = async () => {
-            let {returnArticle, response} = await dispatch(addArticleThunk(newArticle)).catch(
+            let { returnArticle, response } = await dispatch(addArticleThunk(newArticle)).catch(
                 async (response) => {
                     const data = await response.json();
                     if (data && data.errors) {
@@ -44,32 +49,37 @@ const AddArticle = ({ isLoaded }) => {
 
     return (
         isLoaded && sessionUser ? (
-            <div>
+            <div className='add-article-page'>
                 <ul>
                     {errors.map((error, idx) => (
                         <li key={idx}>{error}</li>
                     ))}
                 </ul>
-                <form onSubmit={handleSubmit}>
-                    <label>Title:</label>
+                <form className="add-article-form" onSubmit={handleSubmit}>
                     <input
                         type='text'
                         onChange={(e) => setTitle(e.target.value)}
+                        id="article-title-input"
                         value={title}
                         name='title'
-                        placeholder='Be clear and descriptive.'
+                        placeholder='Title'
                     />
-                    <label>
-                        Content:
-                    </label>
-                    <textarea
-                        value={content}
-                        onChange={(e) => setContent(e.target.value)}
-                        name='content'
-                        placeholder='your thoughts are valuable to us!'
-                    ></textarea>
-                    <button type='submit'>Submit</button>
+                    <button id="new-article-submit" type='submit'><i class="fa-solid fa-paper-plane fa-lg"></i></button>
                 </form>
+                <div className='editor'>
+                    <CKEditor
+                        editor={ClassicEditor}
+                        data={content}
+                        onChange={(event, editor) => {
+                            const data = editor.getData()
+                            setContent(data)
+                        }} 
+                    />
+                </div>
+                {/* <div>
+                    <h2>Content</h2>
+                    <p>{parse(content)}</p>
+                </div> */}
             </div>
         )
             :
