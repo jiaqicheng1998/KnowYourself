@@ -91,7 +91,6 @@ const AddArticle = ({ isLoaded }) => {
                         }}
                     />
                 </div>
-                <p>{content}</p>
             </div>
         )
             :
