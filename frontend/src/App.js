@@ -11,6 +11,7 @@ import HomePage from "./components/HomePage";
 import AddComment from "./components/AddComment";
 import EditComment from "./components/EditComment";
 import Footer from "./components/Footer";
+import TestOne from "./components/Tests/TestOne";
 import * as sessionActions from './store/session'
 import { loadArticlesThunk } from "./store/article";
 
@@ -33,6 +34,9 @@ function App() {
         <Switch>
           <Route path='/signup' exact={true}>
             <SignupFormPage />
+          </Route>
+          <Route path='/tests/1' exact={true}>
+            <TestOne />
           </Route>
           <Route path='/articles/new' exact={true}>
             <AddArticle isLoaded={isLoaded}/>
