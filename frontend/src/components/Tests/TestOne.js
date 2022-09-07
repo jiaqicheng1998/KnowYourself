@@ -15,7 +15,7 @@ const TestOne = () => {
             result = `Your are popular among your friends. Your are very special to your friends. When they are happy, you would love to share their joy. When they are facing difficulties, you are the first one to offer help. Your kindness makes people love you.`
         }
         if (option == 4) {
-            result = 'Your go with the flow. You prefer happiness and comfort in your mind rather than abundance in material world. You are not very revolutional. You do not like it when your peaceful day-to-day life are interrupted. Same mindset applies to your way of chasing your dream.'
+            result = 'You go with the flow. You prefer happiness and comfort in your mind rather than abundance in material world. You are not very revolutional. You do not like it when your peaceful day-to-day life are interrupted. Same mindset applies to your way of chasing your dream.'
         }
         if (option == 5) {
             result = 'you are often weary and feel weak, and you have little energy for life.'

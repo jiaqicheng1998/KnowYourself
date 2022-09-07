@@ -25,3 +25,6 @@ fetch('/api/comments/4', { method: "DELETE", headers: { "Content-Type": "applica
 // POST IMAGE
 
 fetch('/api/images', { method: "POST", headers: { "Content-Type": "application/json", "XSRF-TOKEN": "vMYWgnym-VAxKHI18ZDVlB-tWVVGuU2YO9gY" }, body: JSON.stringify({ img_url: "https://images6.alphacoders.com/604/604153.jpg", article_id: 34 }) }).then(res => res.json()).then(data => console.log(data));
+
+
+fetch('/api/results', { method: "POST", headers: { "Content-Type": "application/json", "XSRF-TOKEN": "XAEWDZRj-cX6JZNlloxKoehVzdMQtpSTuOj8" }, body: JSON.stringify({ title: "black pink", result: "bp"}) }).then(res => res.json()).then(data => console.log(data));

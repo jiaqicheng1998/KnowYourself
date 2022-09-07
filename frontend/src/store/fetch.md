@@ -31,3 +31,7 @@ store.dispatch(commentActions.deleteCommentThunk(37))
 //addImageThunk
 let image = {img_url: 'https://www.gojinshi.com/wp-content/uploads/2020/06/K-On-Watch-Order-Guide.jpg', article_id: 35} 
 store.dispatch(imageActions.addImageThunk(image))
+
+
+let result = {title: 'b2', result: 'sunset'} 
+store.dispatch(resultActions.addResultThunk(result))
