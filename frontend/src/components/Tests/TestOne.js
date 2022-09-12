@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 import test1Image from './TestOne.jpg';
+import { addResultThunk } from '../../store/result';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 const TestOne = () => {
+    const dispatch = useDispatch()
+    const history = useHistory()
     const [option, setOption] = useState(0)
     const options = Array.from({ length: 21 }, (_, index) => index + 1);
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(option)
         let result;
         if ([1, 3, 6, 7].includes(parseInt(option))) {
             result = `Positive and enthusiastic are your strength! You will not be easily defeated by any obstacles. You firmly believed that "What does not kill you will make you stronger". As long as you keep your positivity, you and overcome anything. You are every likely to be successful`
@@ -44,7 +48,16 @@ const TestOne = () => {
         if (option == 17) {
             result = "You have a strong sense of responsiblity. You are a trustworthy person. Your friend will definitely feel better after your consolation. However, you feel lonely inside and you are afraid of it. You want people's attention at all time."
         }
-        console.log(result)
+        
+        const newResult = {
+            title: "The 'Blob Tree' Test",
+            result: result
+        }
+
+        const returnResult = await dispatch(addResultThunk(newResult));
+        if (returnResult) {
+            history.push(`/results/${returnResult.id}`)
+        }
     }
     return (
         <div>

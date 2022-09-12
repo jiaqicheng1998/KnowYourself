@@ -8,14 +8,14 @@ const Result = () => {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(loadResultsThunk());
-    })
+    }, [])
     const results = useSelector(state => state.result.entries);
     const result = results[resultId]
 
     return (
         <div>
             <h1>Your Result for {result?.title}</h1>
-            <p>{result.result}</p>
+            <p>{result?.result}</p>
         </div>
     )
 }
