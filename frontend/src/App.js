@@ -37,7 +37,7 @@ function App() {
             <SignupFormPage />
           </Route>
           <Route path='/tests/1' exact={true}>
-            <TestOne />
+            <TestOne isLoaded={isLoaded}/>
           </Route>
           <Route path='/results/:id' exact={true}>
             <Result />
