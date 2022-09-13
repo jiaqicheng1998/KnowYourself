@@ -14,8 +14,9 @@ const HomePage = () => {
     const [showArticle, setShowArticle] = useState(true)
     const [showTest, setShowTest] = useState(false)
     const tests = {
-        1: {id: 1, title: "The 'Blob Tree' Test", content: "Reveal your personality by select a character on the tree", img_url: "https://themindsjournal.com/wp-content/uploads/2017/12/blob.jpg"},
-        2: {id: 2, title: "test2", content: "this is test2", img_url: "https://i.graphicmama.com/blog/wp-content/uploads/2018/06/18080741/Flat-Design-Character-flat-and-outline.jpg"}
+        1: { id: 1, title: "The 'Blob Tree' Test", content: `It’s been years ago since I took this psych test. And it has never seized to intrigue me each time I re-take it.
+        This is the famous Blob Tree test created by behavioural psychologist Pip Wilson, who is a psycho-educational gamester and EQ developer. This test helps us to recognize and strengthen emotions, and to some extent, understand our social status in society too. Each blob figure in this picture is in a different mood and has a different position on the tree.`, img_url: "https://themindsjournal.com/wp-content/uploads/2017/12/blob.jpg" },
+        2: { id: 2, title: "test2", content: "this is test2", img_url: "https://i.graphicmama.com/blog/wp-content/uploads/2018/06/18080741/Flat-Design-Character-flat-and-outline.jpg" }
     }
 
     const showArticleButton = () => {
@@ -58,9 +59,16 @@ const HomePage = () => {
                 ))}
                 {showTest && Object.values(tests).map((test) => (
                     <NavLink to={`/tests/${test.id}`} key={test.id}>
-                        <div>
-                            <p>{test.title}</p>
-                            <p>{test.content}</p>
+                        <div className="ind-article-card">
+                            <div className="ind-article-card-left">
+                                <p className="title">{test.title}</p>
+                                <div className="name-and-profile">
+                                    <div className="user-icon" style={{ backgroundImage: `url("https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/majo013-1626936419.jpg")` }}></div>
+                                    <p>Know Yourself</p>
+                                </div>
+                                <p>{test.content.slice(0, 260)}</p>
+                            </div>
+                            <div className="img-left" style={{ backgroundImage: `url(${test.img_url})` }}></div>
                         </div>
                     </NavLink>
                 ))}
