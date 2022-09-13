@@ -1,0 +1,47 @@
+.ind-test {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.ind-test p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.ind-test h1 {
+    font-family: 'Oleo Script Swash Caps', cursive;
+    margin-bottom: 0px;
+}
+
+.test-options {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.ind-option {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    line-height: 2.5;
+    width: 20%;
+}
+
+.check-button {
+    background-color: #eef0ec;
+    color: #4e6058;
+    font-family: 'Montserrat', sans-serif;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid #4e6058;
+    margin-top: 30px;
+    cursor: pointer;
+    width: 250px;
+    margin-left: 70%;
+}
+
+.check-button:hover {
+    background-color: #cbd5d0;
+}

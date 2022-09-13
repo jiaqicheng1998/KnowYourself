@@ -4,6 +4,7 @@ import { addResultThunk } from '../../store/result';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import LoginFormModal from '../LoginFormModal'
+import './Tests.css'
 
 const TestOne = ({ isLoaded }) => {
     const dispatch = useDispatch()
@@ -67,7 +68,7 @@ const TestOne = ({ isLoaded }) => {
         }
     }
     return (
-        <div>
+        <div className='ind-test'>
             <h1>The 'Blob Tree' Test</h1>
             <p>This is the famous Blob Tree test created by behavioural psychologist Pip Wilson,
                 who is a psycho-educational gamester and EQ developer. This test helps us to recognize
@@ -76,11 +77,11 @@ const TestOne = ({ isLoaded }) => {
                 the tree.</p>
             <p>Find the blob-figure that resembles you the most.</p>
             <img src={test1Image} alt="test 1 image" />
-            <form onSubmit={handleSubmit}>
-                <div>
+            <form className="test-form" onSubmit={handleSubmit}>
+                <div className='test-options'>
                     {options.map(option => {
                         return (
-                            <label key={option}>
+                            <label className="ind-option" key={option}>
                                 <input
                                     type="radio"
                                     value={option}
@@ -92,7 +93,7 @@ const TestOne = ({ isLoaded }) => {
                         )
                     })}
                 </div>
-                <button type='submit'>Check Your Result!</button>
+                <button className="check-button" type='submit'>Check Your Result!</button>
             </form>
         </div>
     )
