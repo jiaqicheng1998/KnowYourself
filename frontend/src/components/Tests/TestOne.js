@@ -3,7 +3,6 @@ import test1Image from './TestOne.jpg';
 import { addResultThunk } from '../../store/result';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import LoginFormModal from '../LoginFormModal'
 import './Tests.css'
 
 const TestOne = ({ isLoaded }) => {

@@ -16,7 +16,9 @@ const HomePage = () => {
     const tests = {
         1: { id: 1, title: "The 'Blob Tree' Test", content: `It’s been years ago since I took this psych test. And it has never seized to intrigue me each time I re-take it.
         This is the famous Blob Tree test created by behavioural psychologist Pip Wilson, who is a psycho-educational gamester and EQ developer. This test helps us to recognize and strengthen emotions, and to some extent, understand our social status in society too. Each blob figure in this picture is in a different mood and has a different position on the tree.`, img_url: "https://themindsjournal.com/wp-content/uploads/2017/12/blob.jpg" },
-        2: { id: 2, title: "test2", content: "this is test2", img_url: "https://i.graphicmama.com/blog/wp-content/uploads/2018/06/18080741/Flat-Design-Character-flat-and-outline.jpg" }
+        2: { id: 2, title: "Reveal Your Friend-making Philosophy", content: `This is a fun little psychology test which can reveal your personality! It only takes 2 minutes! Enjoy!
+        What is your first priciple of making friends? Friends sometime can play a big part of our lives. What you really want in making friends? Take this test and figure it out!`, 
+        img_url: "https://newenglandwithlove.com/wp-content/uploads/2020/12/shutterstock_686650819.jpg" }
     }
 
     const showArticleButton = () => {
@@ -66,7 +68,7 @@ const HomePage = () => {
                                     <div className="user-icon" style={{ backgroundImage: `url("https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/majo013-1626936419.jpg")` }}></div>
                                     <p>Know Yourself</p>
                                 </div>
-                                <p>{test.content.slice(0, 260)}</p>
+                                <p>{test.content.slice(0, 260)}...</p>
                             </div>
                             <div className="img-left" style={{ backgroundImage: `url(${test.img_url})` }}></div>
                         </div>

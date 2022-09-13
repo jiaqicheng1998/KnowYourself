@@ -12,6 +12,7 @@ import AddComment from "./components/AddComment";
 import EditComment from "./components/EditComment";
 import Footer from "./components/Footer";
 import TestOne from "./components/Tests/TestOne";
+import TestTwo from "./components/Tests/TestTwo";
 import Result from "./components/Result";
 import * as sessionActions from './store/session'
 import { loadArticlesThunk } from "./store/article";
@@ -38,6 +39,9 @@ function App() {
           </Route>
           <Route path='/tests/1' exact={true}>
             <TestOne isLoaded={isLoaded}/>
+          </Route>
+          <Route path='/tests/2' exact={true}>
+            <TestTwo isLoaded={isLoaded}/>
           </Route>
           <Route path='/results/:id' exact={true}>
             <Result />
