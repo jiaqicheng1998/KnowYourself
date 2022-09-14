@@ -57,3 +57,19 @@
 .check-button:hover {
     background-color: #cbd5d0;
 }
+
+.test-img {
+    width: 800px;
+    height: 600px;
+    background-size: cover;
+    background-position: center center;
+    margin: 0 auto;
+}
+
+.test-img-vertical {
+    width: 650px;
+    height: 800px;
+    background-size: cover;
+    background-position: center center;
+    margin: 0 auto;
+}

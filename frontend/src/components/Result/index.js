@@ -9,7 +9,7 @@ const Result = () => {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(loadResultsThunk());
-    }, [])
+    }, [dispatch])
     const results = useSelector(state => state.result.entries);
     const result = results[resultId]
 

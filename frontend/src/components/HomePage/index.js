@@ -18,7 +18,13 @@ const HomePage = () => {
         This is the famous Blob Tree test created by behavioural psychologist Pip Wilson, who is a psycho-educational gamester and EQ developer. This test helps us to recognize and strengthen emotions, and to some extent, understand our social status in society too. Each blob figure in this picture is in a different mood and has a different position on the tree.`, img_url: "https://themindsjournal.com/wp-content/uploads/2017/12/blob.jpg" },
         2: { id: 2, title: "Reveal Your Friend-making Philosophy", content: `This is a fun little psychology test which can reveal your personality! It only takes 2 minutes! Enjoy!
         What is your first priciple of making friends? Friends sometime can play a big part of our lives. What you really want in making friends? Take this test and figure it out!`, 
-        img_url: "https://newenglandwithlove.com/wp-content/uploads/2020/12/shutterstock_686650819.jpg" }
+        img_url: "https://newenglandwithlove.com/wp-content/uploads/2020/12/shutterstock_686650819.jpg" },
+        3: {
+            id: 3,
+            title: "What Is Your Ideal Relationship?",
+            content: "What kind of relationship you want to build with your loved one? let us take a psychology test of your projection of ideal relationship.Let us see, in your deep heart, what kind of connection you really need.",
+            img_url: "https://img.freepik.com/free-vector/love-concept-flat-design-illustration_23-2149008642.jpg"
+        }
     }
 
     const showArticleButton = () => {
