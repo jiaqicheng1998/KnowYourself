@@ -108,6 +108,12 @@ nav {
     font-size: 1.1rem;
     margin: 12px 15px;
     font-family: 'Montserrat';
+    color:#292524
+}
+
+.profile-dropdown li a {
+    color:#292524;
+    font-size: 1.1rem;
 }
 
 #logout:hover {
