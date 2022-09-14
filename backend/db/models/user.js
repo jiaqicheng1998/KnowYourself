@@ -59,11 +59,12 @@ module.exports = (sequelize, DataTypes) => {
     // associations can be defined here
     User.hasMany(models.Article, { foreignKey: 'user_id' });
     User.hasMany(models.Comment, { foreignKey: 'user_id' });
+    User.hasMany(models.Result, { foreignKey: 'user_id' });
   };
 
   User.prototype.toSafeObject = function() {
-    const { id, username, email, profile_pic } = this;
-    return { id, username, email, profile_pic }
+    const { id, username, email, profile_pic, bio } = this;
+    return { id, username, email, profile_pic, bio }
   }
 
   User.prototype.validatePassword = function (password) {

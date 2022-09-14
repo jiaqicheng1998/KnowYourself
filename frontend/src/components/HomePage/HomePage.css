@@ -69,3 +69,25 @@
     margin-left: 20px;
     font-size: 1rem;
 }
+
+.selection-bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-family: 'Montserrat';
+    font-size: 1.1rem;
+    width: 150px;
+    margin: 0 auto;
+    padding-top: 50px;
+    cursor: pointer;
+}
+
+.non-select {
+    color: #737373
+}
+
+.curr-selected {
+    font-weight: bold;
+    color: #525252;
+    border-bottom: 1px solid #a1a1aa;
+}

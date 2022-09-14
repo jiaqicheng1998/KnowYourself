@@ -1,0 +1,23 @@
+.result-page {
+    width: 600px;
+    min-height: 510px;
+    margin: 0 auto;
+}
+
+.result-page h1 {
+   font-family: 'Oleo Script Swash Caps', cursive;
+   padding-top: 100px;
+}
+
+.result-page p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    line-height: 1.5;
+}
+
+.result-pic {
+    width: 100%;
+    height: 300px;
+    background-size: cover;
+    background-position: center center;
+}
