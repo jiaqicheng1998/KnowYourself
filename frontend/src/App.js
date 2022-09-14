@@ -14,6 +14,7 @@ import Footer from "./components/Footer";
 import TestOne from "./components/Tests/TestOne";
 import TestTwo from "./components/Tests/TestTwo";
 import TestThree from "./components/Tests/TestThree";
+import TestFour from "./components/Tests/TestFour";
 import Result from "./components/Result";
 import * as sessionActions from './store/session'
 import { loadArticlesThunk } from "./store/article";
@@ -46,6 +47,9 @@ function App() {
           </Route>
           <Route path='/tests/3' exact={true}>
             <TestThree isLoaded={isLoaded}/>
+          </Route>
+          <Route path='/tests/4' exact={true}>
+            <TestFour isLoaded={isLoaded}/>
           </Route>
           <Route path='/results/:id' exact={true}>
             <Result />

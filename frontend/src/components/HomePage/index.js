@@ -24,6 +24,14 @@ const HomePage = () => {
             title: "What Is Your Ideal Relationship?",
             content: "What kind of relationship you want to build with your loved one? let us take a psychology test of your projection of ideal relationship.Let us see, in your deep heart, what kind of connection you really need.",
             img_url: "https://img.freepik.com/free-vector/love-concept-flat-design-illustration_23-2149008642.jpg"
+        },
+        4: {
+            id: 4,
+            title: 'Will You Cheat On Your Partner?',
+            content: `A commitment of ones entire lifetime can be difficult to some people. Around 30% to 40% of Americans cheat on their partners. 
+            However, Less than 3% of American adults believe it is not wrong to engage in extramarital sex.
+            Why would you still cheat eventhough you beleive it is wrong? What personality traits of you can make you cheat or not cheat?`,
+            img_url: 'https://thumbs.dreamstime.com/b/broken-heart-man-sad-holding-shape-concept-being-48762539.jpg'
         }
     }
 
